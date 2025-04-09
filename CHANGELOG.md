@@ -1,3 +1,9 @@
+## 1.0.3+2
+
+- Add data format support and update documentation:
+    + Add support for relationship tree data format in `TreeHelper.buildRelationshipTreeData`.
+    + Add support for path tree data format in `TreeHelper.buildPathTreeData`.
+
 ## 1.0.3+1
 
 - Update README.md
