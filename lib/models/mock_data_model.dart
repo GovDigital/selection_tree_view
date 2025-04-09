@@ -268,128 +268,150 @@ class MockDataModel {
     return [accessManagement, inventoryManagement];
   }
 
-  static List<MockDataModel> fakeData() {
-    return [
-      {
-        'code': 'VIEW_USERS',
-        'name': 'View Users',
-        'path': r'Access Management\\User Management',
-      },
-      {
-        'code': 'CREATE_USERS',
-        'name': 'Create Users',
-        'path': r'Access Management\\User Management',
-      },
-      {
-        'code': 'UPDATE_USERS',
-        'name': 'Update Users',
-        'path': r'Access Management\\User Management',
-      },
-      {
-        'code': 'DELETE_USERS',
-        'name': 'Delete Users',
-        'path': r'Access Management\\User Management',
-      },
-      {
-        'code': 'VIEW_ROLES',
-        'name': 'View Roles',
-        'path': r'Access Management\\Role Management',
-      },
-      {
-        'code': 'CREATE_ROLES',
-        'name': 'Create Roles',
-        'path': r'Access Management\\Role Management',
-      },
-      {
-        'code': 'UPDATE_ROLES',
-        'name': 'Update Roles',
-        'path': r'Access Management\\Role Management',
-      },
-      {
-        'code': 'DELETE_ROLES',
-        'name': 'Delete Roles',
-        'path': r'Access Management\\Role Management',
-      },
-      {
-        'code': 'VIEW_PRODUCTS',
-        'name': 'View Products',
-        'path': r'Inventory Management\\Products\\Electronics',
-      },
-      {
-        'code': 'CREATE_PRODUCTS',
-        'name': 'Create Products',
-        'path': r'Inventory Management\\Products\\Electronics',
-      },
-      {
-        'code': 'UPDATE_PRODUCTS',
-        'name': 'Update Products',
-        'path': r'Inventory Management\\Products\\Furniture',
-      },
-      {
-        'code': 'DELETE_PRODUCTS',
-        'name': 'Delete Products',
-        'path': r'Inventory Management\\Products\\Furniture',
-      },
-      {
-        'code': 'VIEW_ORDERS',
-        'name': 'View Orders',
-        'path': r'E-Commerce\\Orders\\Pending Orders',
-      },
-      {
-        'code': 'CREATE_ORDERS',
-        'name': 'Create Orders',
-        'path': r'E-Commerce\\Orders\\Pending Orders',
-      },
-      {
-        'code': 'UPDATE_ORDERS',
-        'name': 'Update Orders',
-        'path': r'E-Commerce\\Orders\\Completed Orders',
-      },
-      {
-        'code': 'DELETE_ORDERS',
-        'name': 'Delete Orders',
-        'path': r'E-Commerce\\Orders\\Completed Orders',
-      },
-      {
-        'code': 'VIEW_PROFILES',
-        'name': 'View Profiles',
-        'path': r'User Management\\Profiles\\Customer Profiles',
-      },
-      {
-        'code': 'CREATE_PROFILES',
-        'name': 'Create Profiles',
-        'path': r'User Management\\Profiles\\Customer Profiles',
-      },
-      {
-        'code': 'UPDATE_PROFILES',
-        'name': 'Update Profiles',
-        'path': r'User Management\\Profiles\\Employee Profiles',
-      },
-      {
-        'code': 'DELETE_PROFILES',
-        'name': 'Delete Profiles',
-        'path': r'User Management\\Profiles\\Employee Profiles',
-      },
-      {
-        'code': 'VIEW_SETTINGS',
-        'name': 'View Settings',
-        'path': r'System Settings\\General Settings\\Configurations',
-      },
-      {
-        'code': 'CREATE_SETTINGS',
-        'name': 'Create Settings',
-        'path': r'System Settings\\General Settings\\Configurations',
-      },
-      {
-        'code': 'UPDATE_SETTINGS',
-        'name': 'Update Settings',
-        'path': r'System Settings\\General Settings\\Permissions',
-      },
-      {
-        'code': 'DELETE_SETTINGS',
-        'name': 'Delete Settings',
-        'path': r'System Settings\\General Settings\\Permissions',
-      }
-    ].map(MockDataModel.fromJson).toList();
-  }
+  // This data simulates geographical regions and their hierarchical relationships.
+  static List<Map<String, dynamic>> initialRelationshipTreeData() => [
+        {"parentId": 0, "value": "Earth", "id": 1},
+        {"parentId": 1, "value": "Continents", "id": 2},
+        {"parentId": 2, "value": "Asia", "id": 3},
+        {"parentId": 3, "value": "China", "id": 4},
+        {"parentId": 4, "value": "Beijing", "id": 5},
+        {"parentId": 4, "value": "Shanghai", "id": 6},
+        {"parentId": 3, "value": "Japan", "id": 7},
+        {"parentId": 7, "value": "Tokyo", "id": 8},
+        {"parentId": 2, "value": "Europe", "id": 9},
+        {"parentId": 9, "value": "France", "id": 10},
+        {"parentId": 10, "value": "Paris", "id": 11},
+        {"parentId": 9, "value": "Germany", "id": 12},
+        {"parentId": 12, "value": "Berlin", "id": 13},
+        {"parentId": 2, "value": "America", "id": 14},
+        {"parentId": 14, "value": "USA", "id": 15},
+        {"parentId": 15, "value": "New York", "id": 16},
+        {"parentId": 15, "value": "Los Angeles", "id": 17},
+        {"parentId": 14, "value": "Canada", "id": 18},
+        {"parentId": 18, "value": "Toronto", "id": 19},
+      ];
+
+  // This data simulates permissions within different modules and their hierarchical paths.
+  static List<Map<String, dynamic>> initialPathTreeData() => [
+        {
+          'code': 'VIEW_USERS',
+          'name': 'View Users',
+          'path': r'Access Management\\User Management',
+        },
+        {
+          'code': 'CREATE_USERS',
+          'name': 'Create Users',
+          'path': r'Access Management\\User Management',
+        },
+        {
+          'code': 'UPDATE_USERS',
+          'name': 'Update Users',
+          'path': r'Access Management\\User Management',
+        },
+        {
+          'code': 'DELETE_USERS',
+          'name': 'Delete Users',
+          'path': r'Access Management\\User Management',
+        },
+        {
+          'code': 'VIEW_ROLES',
+          'name': 'View Roles',
+          'path': r'Access Management\\Role Management',
+        },
+        {
+          'code': 'CREATE_ROLES',
+          'name': 'Create Roles',
+          'path': r'Access Management\\Role Management',
+        },
+        {
+          'code': 'UPDATE_ROLES',
+          'name': 'Update Roles',
+          'path': r'Access Management\\Role Management',
+        },
+        {
+          'code': 'DELETE_ROLES',
+          'name': 'Delete Roles',
+          'path': r'Access Management\\Role Management',
+        },
+        {
+          'code': 'VIEW_PRODUCTS',
+          'name': 'View Products',
+          'path': r'Inventory Management\\Products\\Electronics',
+        },
+        {
+          'code': 'CREATE_PRODUCTS',
+          'name': 'Create Products',
+          'path': r'Inventory Management\\Products\\Electronics',
+        },
+        {
+          'code': 'UPDATE_PRODUCTS',
+          'name': 'Update Products',
+          'path': r'Inventory Management\\Products\\Furniture',
+        },
+        {
+          'code': 'DELETE_PRODUCTS',
+          'name': 'Delete Products',
+          'path': r'Inventory Management\\Products\\Furniture',
+        },
+        {
+          'code': 'VIEW_ORDERS',
+          'name': 'View Orders',
+          'path': r'E-Commerce\\Orders\\Pending Orders',
+        },
+        {
+          'code': 'CREATE_ORDERS',
+          'name': 'Create Orders',
+          'path': r'E-Commerce\\Orders\\Pending Orders',
+        },
+        {
+          'code': 'UPDATE_ORDERS',
+          'name': 'Update Orders',
+          'path': r'E-Commerce\\Orders\\Completed Orders',
+        },
+        {
+          'code': 'DELETE_ORDERS',
+          'name': 'Delete Orders',
+          'path': r'E-Commerce\\Orders\\Completed Orders',
+        },
+        {
+          'code': 'VIEW_PROFILES',
+          'name': 'View Profiles',
+          'path': r'User Management\\Profiles\\Customer Profiles',
+        },
+        {
+          'code': 'CREATE_PROFILES',
+          'name': 'Create Profiles',
+          'path': r'User Management\\Profiles\\Customer Profiles',
+        },
+        {
+          'code': 'UPDATE_PROFILES',
+          'name': 'Update Profiles',
+          'path': r'User Management\\Profiles\\Employee Profiles',
+        },
+        {
+          'code': 'DELETE_PROFILES',
+          'name': 'Delete Profiles',
+          'path': r'User Management\\Profiles\\Employee Profiles',
+        },
+        {
+          'code': 'VIEW_SETTINGS',
+          'name': 'View Settings',
+          'path': r'System Settings\\General Settings\\Configurations',
+        },
+        {
+          'code': 'CREATE_SETTINGS',
+          'name': 'Create Settings',
+          'path': r'System Settings\\General Settings\\Configurations',
+        },
+        {
+          'code': 'UPDATE_SETTINGS',
+          'name': 'Update Settings',
+          'path': r'System Settings\\General Settings\\Permissions',
+        },
+        {
+          'code': 'DELETE_SETTINGS',
+          'name': 'Delete Settings',
+          'path': r'System Settings\\General Settings\\Permissions',
+        }
+      ];
 }

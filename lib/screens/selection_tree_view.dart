@@ -7,6 +7,14 @@ import 'package:selection_tree_view/utils/globals.dart';
 import 'package:selection_tree_view/viewmodel/tree_view_cubit.dart';
 
 class SelectionTreeView extends StatefulWidget {
+  /// Creates a widget that displays a tree view with selectable nodes.
+  ///
+  /// [rootNodes] is a required list of [TreeNode] that represents the root
+  /// of the tree.
+  /// [onSelectNode] is a required callback that is invoked when a node is selected.
+  /// [treeConfiguration] is an optional configuration for the tree view.
+  /// [titleBuilder] is an optional builder for the title of each node.
+  /// [prefixIconBuilder] is an optional builder for the prefix icon of each node.
   const SelectionTreeView({
     super.key,
     required this.rootNodes,
@@ -17,11 +25,25 @@ class SelectionTreeView extends StatefulWidget {
     this.treeRowDecoration,
   });
 
+  /// The list of root nodes in the tree view.
   final List<TreeNode> rootNodes;
+
+  /// Optional configuration for the tree view.
   final TreeConfiguration? treeConfiguration;
+
+  /// Callback that is invoked when a node is selected.
   final Function(List<TreeNode>? rootNodes, TreeNode nodeSelected) onSelectNode;
+
+  /// Optional builder for the title of each node.
   final TitleBuilder? titleBuilder;
+
+  /// Optional builder for the prefix icon of each node.
   final PrefixIconBuilder? prefixIconBuilder;
+
+  /// Optional decoration for each row in the tree view.
+  ///
+  /// This function will be called with the current [TreeNode] and its index.
+  /// It should return a [Decoration] to be applied to the row.
   final TreeRowDecoration? treeRowDecoration;
 
   @override

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:selection_tree_view/models/mock_data_model.dart';
 import 'package:selection_tree_view/models/tree_configuration.dart';
 import 'package:selection_tree_view/models/tree_node.dart';
 
@@ -31,55 +30,6 @@ class TreeViewCubit extends Cubit<TreeViewState> {
       );
       setDecoration(treeConfiguration, e.children);
     }
-  }
-
-  // test
-  List<TreeNode> mapToTreeNodes(List<MockDataModel> permissions) {
-    final nodesMap = <String, TreeNode>{};
-    final rootNodes = <TreeNode>[];
-
-    for (final item in permissions) {
-      final paths = item.path?.trim().split(r'\\');
-      TreeNode? currentParent;
-
-      for (var i = 0; i < (paths?.length ?? 0); i++) {
-        final path = paths![i];
-
-        final hierarchyLevel = i;
-
-        final currentNode = nodesMap.putIfAbsent(path, () {
-          final newNode = TreeNode(
-            title: path,
-            code: path,
-            children: [],
-            hierarchy: hierarchyLevel,
-            parent: currentParent,
-          );
-
-          if (currentParent != null) {
-            currentParent.children.add(newNode);
-          } else {
-            rootNodes.add(newNode);
-          }
-
-          return newNode;
-        });
-
-        currentParent = currentNode;
-      }
-
-      final permissionNode = TreeNode(
-        title: item.name,
-        code: item.code,
-        parent: currentParent,
-        hierarchy: (currentParent?.hierarchy ?? 0) + 1,
-        children: [],
-      );
-
-      currentParent?.children.add(permissionNode);
-    }
-
-    return rootNodes;
   }
 
   void onSelectNodeChildren(TreeNode node) {

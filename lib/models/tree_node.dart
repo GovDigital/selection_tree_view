@@ -2,6 +2,7 @@ import 'package:selection_tree_view/models/tree_configuration.dart';
 
 class TreeNode {
   TreeNode({
+    this.id,
     this.title,
     this.code,
     this.isCheck = false,
@@ -10,6 +11,7 @@ class TreeNode {
     this.children = const [],
   });
 
+  int? id;
   String? title;
   String? code;
   bool? isCheck;
@@ -19,6 +21,7 @@ class TreeNode {
   TreeConfiguration treeConfiguration = TreeConfiguration();
 
   TreeNode copyWith({
+    int? id,
     String? title,
     String? code,
     bool? isCheck,
@@ -27,6 +30,7 @@ class TreeNode {
     List<TreeNode>? children,
   }) {
     return TreeNode(
+      id: id ?? this.id,
       title: title ?? this.title,
       code: code ?? this.code,
       isCheck: isCheck ?? this.isCheck,
@@ -37,7 +41,8 @@ class TreeNode {
   }
 
   TreeNode.fromJson(dynamic json)
-      : title = json['title'],
+      : id = json['id'],
+        title = json['title'],
         code = json['code'],
         isCheck = json['isCheck'] ?? false,
         hierarchy = json['hierarchy'] ?? 0,
@@ -49,6 +54,7 @@ class TreeNode {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'code': code,
       'isCheck': isCheck,
