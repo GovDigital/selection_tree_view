@@ -1,3 +1,8 @@
+## 1.0.4
+
+- Fix scrolling issue in nested ListView:
+    + Set `primary: false` and `physics: NeverScrollableScrollPhysics()` in the ListView.builder to prevent scrolling conflicts when nested inside another scrollable widget.
+
 ## 1.0.3+2
 
 - Add data format support and update documentation:

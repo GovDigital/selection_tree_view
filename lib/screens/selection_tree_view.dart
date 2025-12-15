@@ -74,6 +74,8 @@ class _SelectionTreeViewState extends State<SelectionTreeView> {
           return Material(
             child: ListView.builder(
               shrinkWrap: true,
+              primary: false,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: state.rootNodes?.length,
               itemBuilder: (context, index) => buildTreeNode(state, index),
             ),
